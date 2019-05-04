@@ -19,7 +19,7 @@ class TestAddContact(unittest.TestCase):
         self.fill_form_telephone(wd, home="8495", mobile="8911", work="8812", fax="84951")
         self.fill_form_email(wd, email="er", email2="qw", email3="yu", homepage="rewti")
         self.fill_form_bday(wd, bday="14", bmonth="November", byear="1986", aday="18", amonth="November", ayear="1996")
-        self.fill_form_secondary(wd)
+        self.fill_form_secondary(wd, address2="SPb", phone2="Nevskiy", notes="none")
         self.submit_creation_new_contact(wd)
         self.logout(wd)
 
@@ -29,13 +29,13 @@ class TestAddContact(unittest.TestCase):
     def submit_creation_new_contact(self, wd):
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
 
-    def fill_form_secondary(self, wd):
+    def fill_form_secondary(self, wd, address2, phone2, notes):
         wd.find_element_by_name("address2").clear()
-        wd.find_element_by_name("address2").send_keys("SPb")
+        wd.find_element_by_name("address2").send_keys(address2)
         wd.find_element_by_name("phone2").clear()
-        wd.find_element_by_name("phone2").send_keys("Nevskiy")
+        wd.find_element_by_name("phone2").send_keys(phone2)
         wd.find_element_by_name("notes").clear()
-        wd.find_element_by_name("notes").send_keys("none")
+        wd.find_element_by_name("notes").send_keys(notes)
 
     def fill_form_bday(self, wd, bday, bmonth, byear, aday, amonth, ayear):
         wd.find_element_by_name("bday").click()
