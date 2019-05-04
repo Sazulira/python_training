@@ -5,6 +5,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest
 from data import Name
+from data import Tel
 
 class TestAddContact(unittest.TestCase):
     def setUp(self):
@@ -17,7 +18,7 @@ class TestAddContact(unittest.TestCase):
         self.login(wd, username="admin", password="secret")
         self.open_add_new_contact_page(wd)
         self.fill_form_name(wd, Name(firstname="Misha", middlename="MIO", lastname="Ivanov", nickname="MIOBN", title="MR", company="Comp", address="Moscow"))
-        self.fill_form_telephone(wd, home="8495", mobile="8911", work="8812", fax="84951")
+        self.fill_form_telephone(wd, Tel(home="8495", mobile="8911", work="8812", fax="84951"))
         self.fill_form_email(wd, email="er", email2="qw", email3="yu", homepage="rewti")
         self.fill_form_bday(wd, bday="14", bmonth="November", byear="1986", aday="18", amonth="November", ayear="1996")
         self.fill_form_secondary(wd, address2="SPb", phone2="Nevskiy", notes="none")
@@ -72,15 +73,15 @@ class TestAddContact(unittest.TestCase):
         wd.find_element_by_name("homepage").clear()
         wd.find_element_by_name("homepage").send_keys(homepage)
 
-    def fill_form_telephone(self, wd, home, mobile, work, fax):
+    def fill_form_telephone(self, wd, tel):
         wd.find_element_by_name("home").clear()
-        wd.find_element_by_name("home").send_keys(home)
+        wd.find_element_by_name("home").send_keys(tel.home)
         wd.find_element_by_name("mobile").clear()
-        wd.find_element_by_name("mobile").send_keys(mobile)
+        wd.find_element_by_name("mobile").send_keys(tel.mobile)
         wd.find_element_by_name("work").clear()
-        wd.find_element_by_name("work").send_keys(work)
+        wd.find_element_by_name("work").send_keys(tel.work)
         wd.find_element_by_name("fax").clear()
-        wd.find_element_by_name("fax").send_keys(fax)
+        wd.find_element_by_name("fax").send_keys(tel.fax)
 
     def fill_form_name(self, wd, name):
         wd.find_element_by_name("firstname").click()
