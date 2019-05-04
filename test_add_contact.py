@@ -17,7 +17,7 @@ class TestAddContact(unittest.TestCase):
         self.open_add_new_contact_page(wd)
         self.fill_form_name(wd, firstname="Misha", middlename="MIO", lastname="Ivanov", nickname="MIOBN", title="MR", company="Comp", address="Moscow")
         self.fill_form_telephone(wd, home="8495", mobile="8911", work="8812", fax="84951")
-        self.fill_form_email(wd)
+        self.fill_form_email(wd, email="er", email2="qw", email3="yu", homepage="rewti")
         self.fill_form_bday(wd)
         self.fill_form_secondary(wd)
         self.submit_creation_new_contact(wd)
@@ -61,15 +61,15 @@ class TestAddContact(unittest.TestCase):
         wd.find_element_by_name("ayear").clear()
         wd.find_element_by_name("ayear").send_keys("1996")
 
-    def fill_form_email(self, wd):
+    def fill_form_email(self, wd, email, email2, email3, homepage):
         wd.find_element_by_name("email").clear()
-        wd.find_element_by_name("email").send_keys("er")
+        wd.find_element_by_name("email").send_keys(email)
         wd.find_element_by_name("email2").clear()
-        wd.find_element_by_name("email2").send_keys("qw")
+        wd.find_element_by_name("email2").send_keys(email2)
         wd.find_element_by_name("email3").clear()
-        wd.find_element_by_name("email3").send_keys("yu")
+        wd.find_element_by_name("email3").send_keys(email3)
         wd.find_element_by_name("homepage").clear()
-        wd.find_element_by_name("homepage").send_keys("rewti")
+        wd.find_element_by_name("homepage").send_keys(homepage)
 
     def fill_form_telephone(self, wd, home, mobile, work, fax):
         wd.find_element_by_name("home").clear()
