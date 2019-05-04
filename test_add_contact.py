@@ -16,7 +16,7 @@ class TestAddContact(unittest.TestCase):
         self.login(wd, username="admin", password="secret")
         self.open_add_new_contact_page(wd)
         self.fill_form_name(wd, firstname="Misha", middlename="MIO", lastname="Ivanov", nickname="MIOBN", title="MR", company="Comp", address="Moscow")
-        self.fill_form_telephone(wd)
+        self.fill_form_telephone(wd, home="8495", mobile="8911", work="8812", fax="84951")
         self.fill_form_email(wd)
         self.fill_form_bday(wd)
         self.fill_form_secondary(wd)
@@ -71,15 +71,15 @@ class TestAddContact(unittest.TestCase):
         wd.find_element_by_name("homepage").clear()
         wd.find_element_by_name("homepage").send_keys("rewti")
 
-    def fill_form_telephone(self, wd):
+    def fill_form_telephone(self, wd, home, mobile, work, fax):
         wd.find_element_by_name("home").clear()
-        wd.find_element_by_name("home").send_keys("8495")
+        wd.find_element_by_name("home").send_keys(home)
         wd.find_element_by_name("mobile").clear()
-        wd.find_element_by_name("mobile").send_keys("8911")
+        wd.find_element_by_name("mobile").send_keys(mobile)
         wd.find_element_by_name("work").clear()
-        wd.find_element_by_name("work").send_keys("8812")
+        wd.find_element_by_name("work").send_keys(work)
         wd.find_element_by_name("fax").clear()
-        wd.find_element_by_name("fax").send_keys("84951")
+        wd.find_element_by_name("fax").send_keys(fax)
 
     def fill_form_name(self, wd, firstname, middlename, lastname, nickname, title, company, address):
         wd.find_element_by_name("firstname").click()
