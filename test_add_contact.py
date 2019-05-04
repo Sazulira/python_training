@@ -18,7 +18,7 @@ class TestAddContact(unittest.TestCase):
         self.fill_form_name(wd, firstname="Misha", middlename="MIO", lastname="Ivanov", nickname="MIOBN", title="MR", company="Comp", address="Moscow")
         self.fill_form_telephone(wd, home="8495", mobile="8911", work="8812", fax="84951")
         self.fill_form_email(wd, email="er", email2="qw", email3="yu", homepage="rewti")
-        self.fill_form_bday(wd)
+        self.fill_form_bday(wd, bday="14", bmonth="November", byear="1986", aday="18", amonth="November", ayear="1996")
         self.fill_form_secondary(wd)
         self.submit_creation_new_contact(wd)
         self.logout(wd)
@@ -37,29 +37,29 @@ class TestAddContact(unittest.TestCase):
         wd.find_element_by_name("notes").clear()
         wd.find_element_by_name("notes").send_keys("none")
 
-    def fill_form_bday(self, wd):
+    def fill_form_bday(self, wd, bday, bmonth, byear, aday, amonth, ayear):
         wd.find_element_by_name("bday").click()
-        Select(wd.find_element_by_name("bday")).select_by_visible_text("14")
+        Select(wd.find_element_by_name("bday")).select_by_visible_text(bday)
         wd.find_element_by_xpath(
             "(.//*[normalize-space(text()) and normalize-space(.)='Birthday:'])[1]/following::option[16]").click()
         wd.find_element_by_name("bmonth").click()
-        Select(wd.find_element_by_name("bmonth")).select_by_visible_text("November")
+        Select(wd.find_element_by_name("bmonth")).select_by_visible_text(bmonth)
         wd.find_element_by_xpath(
             "(.//*[normalize-space(text()) and normalize-space(.)='Birthday:'])[1]/following::option[45]").click()
         wd.find_element_by_name("byear").click()
         wd.find_element_by_name("byear").clear()
-        wd.find_element_by_name("byear").send_keys("1986")
+        wd.find_element_by_name("byear").send_keys(byear)
         wd.find_element_by_name("aday").click()
-        Select(wd.find_element_by_name("aday")).select_by_visible_text("18")
+        Select(wd.find_element_by_name("aday")).select_by_visible_text(aday)
         wd.find_element_by_xpath(
             "(.//*[normalize-space(text()) and normalize-space(.)='Anniversary:'])[1]/following::option[20]").click()
         wd.find_element_by_name("amonth").click()
-        Select(wd.find_element_by_name("amonth")).select_by_visible_text("November")
+        Select(wd.find_element_by_name("amonth")).select_by_visible_text(amonth)
         wd.find_element_by_xpath(
             "(.//*[normalize-space(text()) and normalize-space(.)='Anniversary:'])[1]/following::option[45]").click()
         wd.find_element_by_name("ayear").click()
         wd.find_element_by_name("ayear").clear()
-        wd.find_element_by_name("ayear").send_keys("1996")
+        wd.find_element_by_name("ayear").send_keys(ayear)
 
     def fill_form_email(self, wd, email, email2, email3, homepage):
         wd.find_element_by_name("email").clear()
