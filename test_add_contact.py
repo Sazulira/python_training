@@ -6,6 +6,7 @@ from selenium.common.exceptions import NoAlertPresentException
 import unittest
 from data import Name
 from data import Tel
+from data import Web
 
 class TestAddContact(unittest.TestCase):
     def setUp(self):
@@ -19,7 +20,7 @@ class TestAddContact(unittest.TestCase):
         self.open_add_new_contact_page(wd)
         self.fill_form_name(wd, Name(firstname="Misha", middlename="MIO", lastname="Ivanov", nickname="MIOBN", title="MR", company="Comp", address="Moscow"))
         self.fill_form_telephone(wd, Tel(home="8495", mobile="8911", work="8812", fax="84951"))
-        self.fill_form_email(wd, email="er", email2="qw", email3="yu", homepage="rewti")
+        self.fill_form_email(wd, Web(email="er", email2="qw", email3="yu", homepage="rewti"))
         self.fill_form_bday(wd, bday="14", bmonth="November", byear="1986", aday="18", amonth="November", ayear="1996")
         self.fill_form_secondary(wd, address2="SPb", phone2="Nevskiy", notes="none")
         self.submit_creation_new_contact(wd)
@@ -63,15 +64,15 @@ class TestAddContact(unittest.TestCase):
         wd.find_element_by_name("ayear").clear()
         wd.find_element_by_name("ayear").send_keys(ayear)
 
-    def fill_form_email(self, wd, email, email2, email3, homepage):
+    def fill_form_email(self, wd, web):
         wd.find_element_by_name("email").clear()
-        wd.find_element_by_name("email").send_keys(email)
+        wd.find_element_by_name("email").send_keys(web.email)
         wd.find_element_by_name("email2").clear()
-        wd.find_element_by_name("email2").send_keys(email2)
+        wd.find_element_by_name("email2").send_keys(web.email2)
         wd.find_element_by_name("email3").clear()
-        wd.find_element_by_name("email3").send_keys(email3)
+        wd.find_element_by_name("email3").send_keys(web.email3)
         wd.find_element_by_name("homepage").clear()
-        wd.find_element_by_name("homepage").send_keys(homepage)
+        wd.find_element_by_name("homepage").send_keys(web.homepage)
 
     def fill_form_telephone(self, wd, tel):
         wd.find_element_by_name("home").clear()
