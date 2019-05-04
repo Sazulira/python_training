@@ -24,15 +24,12 @@ class TestAddContact(unittest.TestCase):
         self.logout(wd)
 
     def logout(self, wd):
-        # logout
         wd.find_element_by_link_text("Logout").click()
 
     def submit_creation_new_contact(self, wd):
-        # submit creation new contact
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
 
     def fill_form_secondary(self, wd):
-        # fill form secondary
         wd.find_element_by_name("address2").clear()
         wd.find_element_by_name("address2").send_keys("SPb")
         wd.find_element_by_name("phone2").clear()
@@ -41,7 +38,6 @@ class TestAddContact(unittest.TestCase):
         wd.find_element_by_name("notes").send_keys("none")
 
     def fill_form_bday(self, wd):
-        # fill form bday
         wd.find_element_by_name("bday").click()
         Select(wd.find_element_by_name("bday")).select_by_visible_text("14")
         wd.find_element_by_xpath(
@@ -66,7 +62,6 @@ class TestAddContact(unittest.TestCase):
         wd.find_element_by_name("ayear").send_keys("1996")
 
     def fill_form_email(self, wd):
-        # fill form e-mail
         wd.find_element_by_name("email").clear()
         wd.find_element_by_name("email").send_keys("er")
         wd.find_element_by_name("email2").clear()
@@ -77,7 +72,6 @@ class TestAddContact(unittest.TestCase):
         wd.find_element_by_name("homepage").send_keys("rewti")
 
     def fill_form_telephone(self, wd):
-        # fill form telephone
         wd.find_element_by_name("home").clear()
         wd.find_element_by_name("home").send_keys("8495")
         wd.find_element_by_name("mobile").clear()
@@ -88,7 +82,6 @@ class TestAddContact(unittest.TestCase):
         wd.find_element_by_name("fax").send_keys("84951")
 
     def fill_form_name(self, wd):
-        # fill form name
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
         wd.find_element_by_name("firstname").send_keys("Misha")
