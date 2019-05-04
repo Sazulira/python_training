@@ -4,6 +4,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest
+from data import Name
 
 class TestAddContact(unittest.TestCase):
     def setUp(self):
@@ -15,7 +16,7 @@ class TestAddContact(unittest.TestCase):
         self.open_home_page(wd)
         self.login(wd, username="admin", password="secret")
         self.open_add_new_contact_page(wd)
-        self.fill_form_name(wd, firstname="Misha", middlename="MIO", lastname="Ivanov", nickname="MIOBN", title="MR", company="Comp", address="Moscow")
+        self.fill_form_name(wd, Name(firstname="Misha", middlename="MIO", lastname="Ivanov", nickname="MIOBN", title="MR", company="Comp", address="Moscow"))
         self.fill_form_telephone(wd, home="8495", mobile="8911", work="8812", fax="84951")
         self.fill_form_email(wd, email="er", email2="qw", email3="yu", homepage="rewti")
         self.fill_form_bday(wd, bday="14", bmonth="November", byear="1986", aday="18", amonth="November", ayear="1996")
@@ -81,22 +82,22 @@ class TestAddContact(unittest.TestCase):
         wd.find_element_by_name("fax").clear()
         wd.find_element_by_name("fax").send_keys(fax)
 
-    def fill_form_name(self, wd, firstname, middlename, lastname, nickname, title, company, address):
+    def fill_form_name(self, wd, name):
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
-        wd.find_element_by_name("firstname").send_keys(firstname)
+        wd.find_element_by_name("firstname").send_keys(name.firstname)
         wd.find_element_by_name("middlename").clear()
-        wd.find_element_by_name("middlename").send_keys(middlename)
+        wd.find_element_by_name("middlename").send_keys(name.middlename)
         wd.find_element_by_name("lastname").clear()
-        wd.find_element_by_name("lastname").send_keys(lastname)
+        wd.find_element_by_name("lastname").send_keys(name.lastname)
         wd.find_element_by_name("nickname").clear()
-        wd.find_element_by_name("nickname").send_keys(nickname)
+        wd.find_element_by_name("nickname").send_keys(name.nickname)
         wd.find_element_by_name("title").clear()
-        wd.find_element_by_name("title").send_keys(title)
+        wd.find_element_by_name("title").send_keys(name.title)
         wd.find_element_by_name("company").clear()
-        wd.find_element_by_name("company").send_keys(company)
+        wd.find_element_by_name("company").send_keys(name.company)
         wd.find_element_by_name("address").clear()
-        wd.find_element_by_name("address").send_keys(address)
+        wd.find_element_by_name("address").send_keys(name.address)
 
     def open_add_new_contact_page(self, wd):
         wd.find_element_by_link_text("add new").click()
