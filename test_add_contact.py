@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
@@ -14,13 +12,17 @@ class TestAddContact(unittest.TestCase):
 
     def test_add_contact(self):
         wd = self.wd
+        # open homepage
         wd.get("http://localhost/addressbook/")
+        # login
         wd.find_element_by_name("user").clear()
         wd.find_element_by_name("user").send_keys("admin")
         wd.find_element_by_name("pass").clear()
         wd.find_element_by_name("pass").send_keys("secret")
         wd.find_element_by_xpath("//input[@value='Login']").click()
+        # open add new contact page
         wd.find_element_by_link_text("add new").click()
+        # fill form name
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
         wd.find_element_by_name("firstname").send_keys("Misha")
@@ -36,6 +38,7 @@ class TestAddContact(unittest.TestCase):
         wd.find_element_by_name("company").send_keys("Comp")
         wd.find_element_by_name("address").clear()
         wd.find_element_by_name("address").send_keys("Moscow")
+        # fill form telephone
         wd.find_element_by_name("home").clear()
         wd.find_element_by_name("home").send_keys("8495")
         wd.find_element_by_name("mobile").clear()
@@ -44,6 +47,7 @@ class TestAddContact(unittest.TestCase):
         wd.find_element_by_name("work").send_keys("8812")
         wd.find_element_by_name("fax").clear()
         wd.find_element_by_name("fax").send_keys("84951")
+        # fill form e-mail
         wd.find_element_by_name("email").clear()
         wd.find_element_by_name("email").send_keys("er")
         wd.find_element_by_name("email2").clear()
@@ -52,6 +56,7 @@ class TestAddContact(unittest.TestCase):
         wd.find_element_by_name("email3").send_keys("yu")
         wd.find_element_by_name("homepage").clear()
         wd.find_element_by_name("homepage").send_keys("rewti")
+        # fill form bday
         wd.find_element_by_name("bday").click()
         Select(wd.find_element_by_name("bday")).select_by_visible_text("14")
         wd.find_element_by_xpath("(.//*[normalize-space(text()) and normalize-space(.)='Birthday:'])[1]/following::option[16]").click()
@@ -70,6 +75,7 @@ class TestAddContact(unittest.TestCase):
         wd.find_element_by_name("ayear").click()
         wd.find_element_by_name("ayear").clear()
         wd.find_element_by_name("ayear").send_keys("1996")
+        # fill form secondary
         wd.find_element_by_name("address2").clear()
         wd.find_element_by_name("address2").send_keys("SPb")
         wd.find_element_by_name("phone2").clear()
