@@ -17,11 +17,10 @@ class TestAddContact(unittest.TestCase):
         self.login(wd, username="admin", password="secret")
         self.open_add_new_contact_page(wd)
         self.fill_form_name(wd, Contact(firstname="Misha", middlename="MIO", lastname="Ivanov", nickname="MIOBN", title="MR",
-                                        company="Comp", address="Moscow"))
-        self.fill_form_telephone(wd, Contact(home="8495", mobile="8911", work="8812", fax="84951"))
-        self.fill_form_email(wd, Contact(email="er", email2="qw", email3="yu", homepage="rewti"))
-        self.fill_form_bday(wd, Contact(bday="14", bmonth="November", byear="1986", aday="18", amonth="November", ayear="1996"))
-        self.fill_form_secondary(wd, Contact(address2="SPb", phone2="Nevskiy", notes="none"))
+                                        company="Comp", address="Moscow", home="8495", mobile="8911", work="8812",
+                                        fax="84951", email="er", email2="qw", email3="yu", homepage="rewti", bday="14",
+                                        bmonth="November", byear="1986", aday="18", amonth="November", ayear="1996",
+                                        address2="SPb", phone2="Nevskiy", notes="none"))
         self.submit_creation_new_contact(wd)
         self.logout(wd)
 
