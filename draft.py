@@ -188,5 +188,3 @@ class Extra:
         self.notes = notes
 
 
-
-
