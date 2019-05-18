@@ -86,3 +86,11 @@ class ContactHelper:
     def submit_creation_new_contact(self):
         wd = self.app.wd
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
+
+    def delete_first_contact(self):
+        wd = self.app.wd
+        # select first contact
+        wd.find_element_by_name("selected[]").click()
+        # submit deletion
+        wd.find_element_by_link_text("Delete").click()
+        wd.find_element_by_name("Ok").click()

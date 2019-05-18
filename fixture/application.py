@@ -14,6 +14,10 @@ class Application:
 
     def open_home_page(self):
         wd = self.wd
+        wd.get("http://localhost/addressbook/")
+
+    def open_home_page_for_groups(self):
+        wd = self.wd
         wd.get("http://localhost/addressbook/group.php")
 
     def destroy(self):
