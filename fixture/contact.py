@@ -92,5 +92,5 @@ class ContactHelper:
         # select first contact
         wd.find_element_by_name("selected[]").click()
         # submit deletion
-        wd.find_element_by_link_text("Delete").click()
+        wd.find_element_by_name("Delete").click()
         wd.find_element_by_name("Ok").click()
