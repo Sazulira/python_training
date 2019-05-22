@@ -94,3 +94,15 @@ class ContactHelper:
         # submit deletion
         wd.find_element_by_xpath("(//input[@value='Delete'])").click()
         wd.switch_to_alert().accept()
+
+    def modify_first_contact(self):
+        wd = self.app.wd
+        # select first contact
+        wd.find_element_by_name("selected[]").click()
+        # submit edit
+        wd.find_element_by_xpath("//img[@alt='Edit']").click()
+        wd.find_element_by_name("firstname").click()
+        wd.find_element_by_xpath("//input[@name='firstname']").clear()
+        wd.find_element_by_xpath("//input[@name='firstname']").send_keys("vanya")
+        wd.find_element_by_xpath("(//input[@name='update'])[2]").click()
+
